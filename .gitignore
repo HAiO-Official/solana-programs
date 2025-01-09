@@ -1,0 +1,41 @@
+# OS/Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+.cursorrules
+.cursorignore
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Anchor / Solana
+.anchor/
+.target/
+test-ledger/
+*.so
+*.dSYM
+
+# Rust
+target/
+**/target/
+**/Cargo.lock.backup
+
+# Program Keypairs
+*.keypair.json
+*.json.key
+
+# Build artifacts
+dist/
+lib/
+
+# Logs
+*.log
+logs/
+
+#  pre-registration
+programs/pre-registration/
+tests/pre-registration.ts
