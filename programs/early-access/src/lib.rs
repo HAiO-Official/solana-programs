@@ -1,22 +1,31 @@
 use anchor_lang::prelude::*;
 use sha2::{Digest, Sha256};
 
+#[cfg(not(feature = "no-entrypoint"))]
+use solana_security_txt::security_txt;
+
+#[cfg(not(feature = "no-entrypoint"))]
+security_txt! {
+    name: "HAiO Early Access Program",
+    project_url: "https://haiomusic.com",
+    contacts: "email:cto@haiomusic.com",
+    preferred_languages: "en",
+    source_code: "https://github.com/HAiO-Official/solana-programs",
+    source_revision: "main",
+    acknowledgements: "Thanks to all bug bounty hunters!"
+}
+
 declare_id!("jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ");
 
 #[program]
-/// Early Access Program for user registration
 pub mod early_access {
     use super::*;
 
-    /// Register user's wallet address and emit hashed pubkey
-    /// @param ctx The context containing signer information
     pub fn early_access(ctx: Context<EarlyAccess>) -> Result<()> {
-
         emit!(EarlyAccessEvent {
             hashed_pubkey: hash_pubkey(&ctx.accounts.signer.key()),
             timestamp: Clock::get()?.unix_timestamp,
         });
-
         Ok(())
     }
 }
@@ -33,11 +42,9 @@ pub struct EarlyAccessEvent {
     pub timestamp: i64,
 }
 
-// 컨텍스트 구조체
 #[derive(Accounts)]
 pub struct EarlyAccess<'info> {
-    /// CHECK: This account is only used for signing and its key is hashed
-    /// No additional validation is required as we only need the public key
+    /// CHECK: Only used for signing & hashing the public key
     #[account(signer)]
     pub signer: AccountInfo<'info>,
 }

@@ -9,10 +9,10 @@ import {
 } from "@solana/web3.js";
 import { expect } from "chai";
 import fs from "fs";
-import { EarlyAccess } from "../target/types/early_access";
 
 // Utility function for SHA-256 hashing
 import crypto from "crypto";
+import { EarlyAccess } from "../target/types/early_access";
 function sha256(data: Buffer): Buffer {
   return crypto.createHash("sha256").update(data).digest();
 }
