@@ -9,10 +9,10 @@ security_txt! {
     name: "HAiO Early Access Program",
     project_url: "https://haiomusic.com",
     contacts: "email:cto@haiomusic.com",
+    policy: "We do not pay a bug bounty.",
     preferred_languages: "en",
     source_code: "https://github.com/HAiO-Official/solana-programs",
-    source_revision: "main",
-    acknowledgements: "Thanks to all bug bounty hunters!"
+    source_revision: "main"
 }
 
 declare_id!("jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ");
