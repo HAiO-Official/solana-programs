@@ -2,13 +2,22 @@
 
 ## Overview
 
-This repository contains the Solana programs for the HAiO project, built with the Anchor framework. Our programs are open-source to ensure transparency and encourage community collaboration.
+This repository contains Solana programs built with the Anchor framework for the HAiO project.  
+All programs are open-source to ensure transparency and foster community collaboration.
 
 ## Programs
 
-### 1. Early-Access Program
+### 1. Daily Check-In Program
 
-A smart contract that manages early participant benefits
+A Solana program allowing each user (wallet) to check in once per day (UTC-based).
+
+- Uses a PDA (Program Derived Address) seeded by `["user-check-in", authority.pubkey]`.
+- Emits an event on successful daily check-in.
+- Fails if the user already checked in on the same day.
+
+### 2. Early-Access Program
+
+A separate program that manages early participant benefits.
 
 ## Quick Start
 
@@ -22,11 +31,12 @@ A smart contract that manages early participant benefits
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/haio-solana-programs
-cd haio-solana-programs
+git clone https://github.com/HAiO-Official/solana-programs
+cd solana-programs
 
-# Install dependencies
+# Install dependencies (using yarn, npm, or whichever package manager your project prefers)
 yarn install
+
 ```
 
 ### Build and Test
@@ -47,6 +57,10 @@ anchor deploy --provider.cluster devnet
 ```
 haio-solana-programs/
 ├── programs/
+│   ├── daily-check-in/     # Daily Check-In program source
+│   │   ├── src/
+│   │   │   └── lib.rs
+│   │   └── Cargo.toml
 │   └── early-access/        # Early-Access program source
 │       ├── Cargo.toml
 │       └── src/
@@ -58,14 +72,15 @@ haio-solana-programs/
 
 ## Program Addresses
 
-| Program      | Devnet                                        | Mainnet                                       |
-| ------------ | --------------------------------------------- | --------------------------------------------- |
-| Early-Access | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` |
+| Program        | Devnet                                        | Mainnet                                       |
+| -------------- | --------------------------------------------- | --------------------------------------------- |
+| Early-Access   | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` |
+| Daily Check-In | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` | TBD                                           |
 
 ## Security
 
 - For security concerns, please review our [`security.txt`](./security.txt)
-- Report vulnerabilities to: cto@haiomusic.com
+- Report vulnerabilities to: cto@haio.fun
 
 ## Contributing
 
@@ -81,10 +96,17 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Contact & Support
 
-- Email: cto@haiomusic.com
+- Email: cto@haio.fun
 
 ## Acknowledgments
 
 - Solana Foundation
 - Anchor Framework Team
 - Our Contributors
+
+## Notes
+
+- **Security.txt**: The references in `security_txt! { ... }` will appear on-chain if deployed without the `"no-entrypoint"` feature. This is optional but can help define security policies for your Solana program.
+- **Program ID**: Ensure the `declare_id!()` matches the keypair used in `Anchor.toml` or your deployment process.
+- **Testing**: The test code demonstrates using `EventParser` to ensure an event is actually emitted. If you prefer, you could also do manual base64 decoding.
+- **Usage**: For real-world usage, you’d integrate this program with a front-end that calls instructions like `check_in` via wallet-adapter or Anchor’s client library.
