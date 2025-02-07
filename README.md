@@ -7,17 +7,20 @@ All programs are open-source to ensure transparency and foster community collabo
 
 ## Programs
 
-### 1. Daily Check-In Program
+### 1. Early-Access Program
+
+- Uses SHA-256 hashing of participant's public key for privacy protection
+- Emits an event containing only the hashed wallet address and timestamp
+- Requires only transaction signature verification
+- No on-chain state storage (completely stateless design)
+
+### 2. Daily Check-In Program
 
 A Solana program allowing each user (wallet) to check in once per day (UTC-based).
 
 - Uses a PDA (Program Derived Address) seeded by `["user-check-in", authority.pubkey]`.
 - Emits an event on successful daily check-in.
 - Fails if the user already checked in on the same day.
-
-### 2. Early-Access Program
-
-A separate program that manages early participant benefits.
 
 ## Quick Start
 
@@ -57,13 +60,14 @@ anchor deploy --provider.cluster devnet
 ```
 haio-solana-programs/
 ├── programs/
+│   ├── early-access/        # Early-Access program source
+│   │   ├── src/
+│   │   │   └── lib.rs
+│   │   └── Cargo.toml
 │   ├── daily-check-in/     # Daily Check-In program source
 │   │   ├── src/
 │   │   │   └── lib.rs
 │   │   └── Cargo.toml
-│   └── early-access/        # Early-Access program source
-│       ├── Cargo.toml
-│       └── src/
 ├── tests/                   # Test files
 ├── Anchor.toml             # Anchor configuration
 ├── Cargo.toml              # Rust workspace configuration
