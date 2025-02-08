@@ -7,8 +7,8 @@ use solana_security_txt::security_txt;
 #[cfg(not(feature = "no-entrypoint"))]
 security_txt! {
     name: "HAiO Early Access Program",
-    project_url: "https://haiomusic.com",
-    contacts: "email:cto@haiomusic.com",
+    project_url: "https://haio.fun",
+    contacts: "email:cto@haio.fun",
     policy: "We do not pay a bug bounty.",
     preferred_languages: "en",
     source_code: "https://github.com/HAiO-Official/solana-programs",

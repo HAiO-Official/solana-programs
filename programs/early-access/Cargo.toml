@@ -3,7 +3,7 @@ name = "early_access"
 version = "0.1.0"
 edition = "2021"
 description = "A simple program for early access"
-authors = ["CTO <cto@haiomusic.com>"]
+authors = ["CTO <cto@haio.fun>"]
 
 [lib]
 name = "early_access"
