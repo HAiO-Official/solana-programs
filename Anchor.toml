@@ -6,26 +6,23 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-early-access = "jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ"
 
 [programs.devnet]
-early-access = "jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ"
+
+[programs.mainnet]
 
 [registry]
-url = "https://api.apr.dev"
+url = "https://anchor.projectserum.com"
 
 [provider]
-#cluster = "http://localhost:8899"
-cluster = "mainnet"
-wallet = "~/.config/solana/haio-deployer.json"
+cluster = "https://api.devnet.solana.com"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 
 [workspace]
 members = [
-    "programs/*"
+    "programs/*",
 ]
-exclude = [
-    "programs/pre-registration"
-]
+exclude = []
