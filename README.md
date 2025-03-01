@@ -79,7 +79,7 @@ haio-solana-programs/
 | Program        | Devnet                                        | Mainnet                                       |
 | -------------- | --------------------------------------------- | --------------------------------------------- |
 | Early-Access   | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` |
-| Daily Check-In | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` | TBD                                           |
+| Daily Check-In | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` |
 
 ## Security
 
