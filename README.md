@@ -3,7 +3,7 @@
 # 🚚 This repository is no longer updated.
 👉 **Active development has moved to [`HAiO-solana-programs`](https://github.com/HAiO-labs/HAiO-solana-programs).**
 
-
+---
 # HAiO Solana Programs
 
 ## Overview
