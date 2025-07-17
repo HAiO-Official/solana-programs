@@ -12,7 +12,7 @@ security_txt! {
     contacts: "email:cto@haio.fun",
     policy: "We do not pay a bug bounty.",
     preferred_languages: "en",
-    source_code: "https://github.com/HAiO-Official/solana-programs",
+    source_code: "https://github.com/HAiO-labs/solana-programs",
     source_revision: "main"
 }
 
@@ -92,7 +92,6 @@ pub struct UserCheckInState {
 /// Event emitted each time a user checks in successfully.
 #[event]
 pub struct CheckInEvent {
-    #[index]
     pub authority: Pubkey,
     pub check_in_day: u64,
 }
