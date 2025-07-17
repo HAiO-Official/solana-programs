@@ -28,6 +28,15 @@ A Solana program allowing each user (wallet) to check in once per day (UTC-based
 - Emits an event on successful daily check-in.
 - Fails if the user already checked in on the same day.
 
+### 3. Create ATA Program
+
+A Solana program that ensures a user has an Associated Token Account (ATA) for a specific service token, creating it if needed, and always emits a single on-chain event per call.
+
+- Automatically creates the ATA for the user if it does not exist
+- Skips ATA creation if it already exists
+- Always emits a single event (`AtaCallEvent`) per call
+- The event field `created_this_tx` is `true` if the ATA was created in this transaction, or `false` if it already existed
+
 ## Quick Start
 
 ### Prerequisites
@@ -40,7 +49,7 @@ A Solana program allowing each user (wallet) to check in once per day (UTC-based
 
 ```bash
 # Clone the repository
-git clone https://github.com/HAiO-Official/solana-programs
+git clone https://github.com/HAiO-labs/solana-programs
 cd solana-programs
 
 # Install dependencies (using yarn, npm, or whichever package manager your project prefers)
@@ -74,6 +83,10 @@ haio-solana-programs/
 │   │   ├── src/
 │   │   │   └── lib.rs
 │   │   └── Cargo.toml
+│   ├── create-ata/        # Create ATA program source
+│   │   ├── src/
+│   │   │   └── lib.rs
+│   │   └── Cargo.toml
 ├── tests/                   # Test files
 ├── Anchor.toml             # Anchor configuration
 ├── Cargo.toml              # Rust workspace configuration
@@ -82,10 +95,11 @@ haio-solana-programs/
 
 ## Program Addresses
 
-| Program        | Devnet                                        | Mainnet                                       |
-| -------------- | --------------------------------------------- | --------------------------------------------- |
-| Early-Access   | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ` |
-| Daily Check-In | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF` |
+| Program        | Devnet                                         | Mainnet                                        |
+| -------------- | ---------------------------------------------- | ---------------------------------------------- |
+| Early-Access   | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ`  | `jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ`  |
+| Daily Check-In | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF`  | `haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF`  |
+| Create ATA     | `HAiowc2WWGp3VwVjpAtiduLCwWQmQqVPQgLbn5jurM8o` | `HAiowc2WWGp3VwVjpAtiduLCwWQmQqVPQgLbn5jurM8o` |
 
 ## Security
 
@@ -119,4 +133,3 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 - **Security.txt**: The references in `security_txt! { ... }` will appear on-chain if deployed without the `"no-entrypoint"` feature. This is optional but can help define security policies for your Solana program.
 - **Program ID**: Ensure the `declare_id!()` matches the keypair used in `Anchor.toml` or your deployment process.
 - **Testing**: The test code demonstrates using `EventParser` to ensure an event is actually emitted. If you prefer, you could also do manual base64 decoding.
-- **Usage**: For real-world usage, you’d integrate this program with a front-end that calls instructions like `check_in` via wallet-adapter or Anchor’s client library.
