@@ -1,22 +1,32 @@
 [toolchain]
-anchor = "0.30.1"
+anchor = "0.31.1"
 
 [features]
 resolution = true
 skip-lint = false
 
 [programs.localnet]
+create_ata = "HAiowc2WWGp3VwVjpAtiduLCwWQmQqVPQgLbn5jurM8o"
+daily_check_in = "haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF"
+early_access = "jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ"
 
 [programs.devnet]
+create_ata = "HAiowc2WWGp3VwVjpAtiduLCwWQmQqVPQgLbn5jurM8o"
+daily_check_in = "haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF"
+early_access = "jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ"
 
 [programs.mainnet]
+create_ata = "HAiowc2WWGp3VwVjpAtiduLCwWQmQqVPQgLbn5jurM8o"
+daily_check_in = "haio6iJNBgiAcm6DfxbqAfwNpsqhd4n2qswjPNhxuzF"
+early_access = "jg82rRko6Hu1KqZ47RR95Jrq1cfqBhaAPXStseajmfQ"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "https://api.devnet.solana.com"
-wallet = "~/.config/solana/id.json"
+#cluster = "https://api.devnet.solana.com"
+cluster = "Localnet"
+wallet = "~/.config/solana/keypairs/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
